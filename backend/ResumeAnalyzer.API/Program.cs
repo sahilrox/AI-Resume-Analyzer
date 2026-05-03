@@ -43,17 +43,13 @@ builder.Services.AddScoped<ILLMService>(sp =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend",
-        policy =>
-        {
-            policy.WithOrigins(
-                "http://localhost:3000",
-                "https://ai-resume-analyzer-8ovhu2327-sahilroxs-projects.vercel.app",
-                "https://ai-resume-analyzer-peach-iota.vercel.app"
-            )
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy
+            .AllowAnyOrigin()
             .AllowAnyHeader()
             .AllowAnyMethod();
-        });
+    });
 });
 
 
