@@ -48,7 +48,8 @@ builder.Services.AddCors(options =>
         {
             policy.WithOrigins(
                 "http://localhost:3000",
-                "https://ai-resume-analyzer-8ovhu2327-sahilroxs-projects.vercel.app"
+                "https://ai-resume-analyzer-8ovhu2327-sahilroxs-projects.vercel.app",
+                "https://ai-resume-analyzer-peach-iota.vercel.app"
             )
             .AllowAnyHeader()
             .AllowAnyMethod();
