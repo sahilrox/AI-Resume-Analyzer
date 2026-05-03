@@ -63,9 +63,9 @@ app.UseSwaggerUI();
 
 
 //app.UseHttpsRedirection();
-
-app.UseAuthorization();
 app.UseCors("AllowFrontend");
+app.UseAuthorization();
+
 
 // 🔥 THIS enables controllers
 app.MapControllers();
