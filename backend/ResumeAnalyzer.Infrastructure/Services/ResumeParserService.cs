@@ -21,7 +21,7 @@ public class ResumeParserService
 
         content.Add(fileContent, "file", fileName);
 
-        var response = await _httpClient.PostAsync("http://localhost:8000/parse", content);
+        var response = await _httpClient.PostAsync("https://resume-parser-z0w5.onrender.com/parse", content);
 
         var json = await response.Content.ReadAsStringAsync();
 
