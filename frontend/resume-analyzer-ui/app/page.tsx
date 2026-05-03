@@ -14,13 +14,13 @@ type AnalysisResult = {
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
-  const [jd, setJd] = useState("");
+  const [jobDescription, setJobDescription] = useState("");
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
     try {
-      if (!file || !jd.trim()) {
+      if (!file || !jobDescription.trim()) {
         alert("Please upload a resume and enter a job description");
         return;
       }
@@ -30,23 +30,17 @@ export default function Home() {
 
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("jobDescription", jd);
+      formData.append("jobDescription", jobDescription);
 
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/resume/analyze-file`, {
-        method: "POST",
-        body: formData,
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/Resume/analyze-file`,
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
 
-      const text = await res.text();
-      console.log("RAW RESPONSE:", text);
-
-      if (!res.ok) {
-        throw new Error(text);
-      }
-
-      const data: AnalysisResult = JSON.parse(text);
-      console.log("PARSED:", data);
-
+      const data = await res.json();
       setResult(data);
     } catch (error) {
       console.error(error);
@@ -90,8 +84,8 @@ export default function Home() {
           placeholder="Paste job description here..."
           className="w-full p-3 border rounded mb-4"
           rows={6}
-          value={jd}
-          onChange={(e) => setJd(e.target.value)}
+          value={jobDescription}
+          onChange={(e) => setJobDescription(e.target.value)}
         />
 
         {/* Button */}
