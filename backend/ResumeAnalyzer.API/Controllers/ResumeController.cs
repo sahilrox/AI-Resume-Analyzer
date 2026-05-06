@@ -16,12 +16,20 @@ public class ResumeController : ControllerBase
     [HttpPost("analyze")]
     public async Task<IActionResult> Analyze([FromBody] AnalyzeRequest request)
     {
-        var result = await _service.AnalyzeAsync(
-            request.ResumeText,
-            request.JobDescription
-        );
+        try
+        {
+            var result = await _service.AnalyzeAsync(request.ResumeText, request.JobDescription);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex); // full log
 
-        return Ok(result);
+            return StatusCode(500, new
+            {
+                error = "Failed to analyze resume. Please try again."
+            });
+        }
     }
 
     [HttpPost("analyze-file")]

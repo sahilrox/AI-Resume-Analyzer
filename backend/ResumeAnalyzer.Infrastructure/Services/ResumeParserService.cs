@@ -26,18 +26,20 @@ public class ResumeParserService
     content
 );
 
-        var json = await response.Content.ReadAsStringAsync();
+        var responseText = await response.Content.ReadAsStringAsync();
 
-        // 🔥 DEBUG LOG
-        Console.WriteLine("PARSER RAW RESPONSE: " + json);
-
-        // ❌ If not JSON → throw clean error
-        if (!json.Trim().StartsWith("{"))
+        if (!response.IsSuccessStatusCode)
         {
-            throw new Exception("Parser returned non-JSON response: " + json);
+            throw new Exception($"Parser failed: {responseText}");
         }
 
-        using var doc = JsonDocument.Parse(json);
+        // 🔥 Ensure it's JSON
+        if (!responseText.TrimStart().StartsWith("{"))
+        {
+            throw new Exception($"Parser returned non-JSON response: {responseText}");
+        }
+
+        using var doc = JsonDocument.Parse(responseText);
 
         return doc.RootElement.GetProperty("text").GetString() ?? "";
     }
