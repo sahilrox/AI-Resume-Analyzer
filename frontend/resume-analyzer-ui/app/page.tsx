@@ -40,8 +40,14 @@ export default function Home() {
         },
       );
 
+      if (!res.ok) {
+        const text = await res.text(); // 👈 NOT json()
+        throw new Error(text);
+      }
+
       const data = await res.json();
       setResult(data);
+      
     } catch (error) {
       console.error(error);
       alert("Something went wrong. Check console.");

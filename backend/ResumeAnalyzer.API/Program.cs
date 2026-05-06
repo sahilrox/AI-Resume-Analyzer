@@ -66,6 +66,19 @@ app.UseRouting();
 // ✅ CORS MUST come after UseRouting
 app.UseCors("AllowFrontend");
 
+app.Use(async (context, next) =>
+{
+    try
+    {
+        await next();
+    }
+    catch (Exception ex)
+    {
+        context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+        throw;
+    }
+});
+
 // (Optional but fine)
 app.UseAuthorization();
 

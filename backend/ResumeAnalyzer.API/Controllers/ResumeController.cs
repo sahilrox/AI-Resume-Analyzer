@@ -47,7 +47,10 @@ public class ResumeController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, $"ERROR: {ex.Message}");
+            return StatusCode(500, new
+            {
+                error = ex.Message
+            });
         }
     }
 }
