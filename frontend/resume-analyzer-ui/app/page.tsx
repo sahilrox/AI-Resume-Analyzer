@@ -71,7 +71,7 @@ export default function Home() {
      <div className="max-w-4xl mx-auto">
        {/* Header */}
        <div className="text-center mb-8">
-         <h1 className="text-4xl font-bold text-gray-900">SkillScan AI 🚀</h1>
+         <h1 className="text-4xl font-bold text-gray-900">SkillScan AI</h1>
          <p className="text-gray-500 mt-2">
            AI-powered resume analysis with semantic matching
          </p>
@@ -137,7 +137,7 @@ export default function Home() {
         : "bg-blue-600 hover:bg-blue-700 hover:scale-105 active:scale-95"
     }`}
            >
-             {loading ? "Analyzing..." : "Analyze 🚀"}
+             {loading ? "Analyzing..." : "Analyze"}
            </button>
          </div>
 
