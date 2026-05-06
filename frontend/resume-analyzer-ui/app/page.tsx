@@ -153,7 +153,7 @@ export default function Home() {
            {/* Scores */}
            <div className="grid md:grid-cols-2 gap-4 mb-6">
              {/* Similarity */}
-             <div className="bg-white shadow-md rounded-xl p-5 border">
+             <div className="bg-white shadow-md rounded-xl p-5 border text-gray-800">
                <p className="text-gray-500 mb-2">Similarity Score</p>
 
                <div className="w-full bg-gray-200 rounded-full h-3 mb-2">
@@ -173,7 +173,7 @@ export default function Home() {
              </div>
 
              {/* Match Score */}
-             <div className="bg-white shadow-md rounded-xl p-5 border text-center">
+             <div className="bg-white shadow-md rounded-xl p-5 border text-gray-800">
                <p className="text-gray-500 mb-2">Match Score</p>
 
                <p
@@ -193,8 +193,8 @@ export default function Home() {
            </div>
 
            {/* Missing Skills */}
-           <div className="bg-white shadow-md rounded-xl p-5 border mb-4">
-             <h3 className="text-lg font-semibold mb-3 text-red-600">
+           <div className="bg-white shadow-md rounded-xl p-5 border text-gray-800">
+             <h3 className="text-lg font-semibold mb-3 text-gray-900">
                ⚠️ Missing Skills
              </h3>
 
@@ -217,8 +217,8 @@ export default function Home() {
            </div>
 
            {/* Strengths */}
-           <div className="bg-white shadow-md rounded-xl p-5 border mb-4">
-             <h3 className="text-lg font-semibold mb-3 text-green-600">
+           <div className="bg-white shadow-md rounded-xl p-5 border text-gray-800">
+             <h3 className="text-lg font-semibold mb-3 text-gray-900">
                💪 Strengths
              </h3>
 
@@ -235,8 +235,8 @@ export default function Home() {
            </div>
 
            {/* Suggestions */}
-           <div className="bg-white shadow-md rounded-xl p-5 border">
-             <h3 className="text-lg font-semibold mb-3 text-blue-600">
+           <div className="bg-white shadow-md rounded-xl p-5 border text-gray-800">
+             <h3 className="text-lg font-semibold mb-3 text-gray-900">
                🚀 Suggestions
              </h3>
 
